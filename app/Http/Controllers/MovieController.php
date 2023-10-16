@@ -25,10 +25,16 @@ class MovieController extends Controller
   public function shawshank()
   {
     $detail = DB::select(
-      'SELECT *
-       FROM `movies`
-       WHERE `name` LIKE "%Shawshank redemption%"
-       LIMIT 1',
+      'SELECT `movies`.*, `people`.`fullname`, `positions`.`name` AS `position`
+        FROM `movies` 
+        LEFT JOIN `movie_person` 
+        ON `movies`.`id` = `movie_person`.`movie_id` 
+        LEFT JOIN `people` 
+        ON `movie_person`.`person_id` = `people`.`id`
+        LEFT JOIN `positions`
+        ON `movie_person`.`position_id` = `positions`.`id`
+        WHERE `movies`.`id` = 111161 
+        ORDER BY `positions`.`name` DESC',
       []
     );
 

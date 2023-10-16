@@ -15,12 +15,9 @@
   <a href="/top-rated-movies">Top rated movies</a><br>
 
 
+
   <?php foreach ($detail as $item) : ?>
-
-
-    <h2><?= $item->name; ?></h2>
-
-
+    <p><?= $item->fullname; ?> - <?= $item->position ?></p>
   <?php endforeach; ?>
 
 
