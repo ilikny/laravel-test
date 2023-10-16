@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\AwardController;
+use App\Http\Controllers\IndexController;
+use App\Http\Controllers\MovieController;
+use App\Http\Controllers\VideogameController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +17,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//   return view('welcome');
+// });
+
+
+//laravel.test/awards
+Route::get('/awards', [AwardController::class, 'index']);
+
+
+
+Route::get('/', [IndexController::class, 'index']);
+
+Route::get('/top-rated-movies', [MovieController::class, 'topRated']);
+
+Route::get('/top-rated-games', [VideogameController::class, 'topRated']);
+
+Route::get('/movies/shawshank-redemption', [MovieController::class, 'shawshank']);
