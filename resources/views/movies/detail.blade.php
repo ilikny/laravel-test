@@ -14,10 +14,12 @@
   <a href="/awards">Awards</a><br>
   <a href="/top-rated-movies">Top rated movies</a><br>
 
-
+  <?php foreach ($detailMovie as $item) : ?>
+    <h2><?= $item->name; ?></h2>
+  <?php endforeach; ?>
 
   <?php foreach ($detail as $item) : ?>
-    <p><?= $item->fullname; ?> - <?= $item->position ?></p>
+    <p><?= $item->position ?> - <?= $item->fullname; ?></p>
   <?php endforeach; ?>
 
 

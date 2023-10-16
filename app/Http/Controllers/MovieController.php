@@ -38,6 +38,14 @@ class MovieController extends Controller
       []
     );
 
-    return view('movies.detail', compact('detail'));
+    $detailMovie = DB::select(
+      'SELECT *
+        FROM `movies` 
+        WHERE `movies`.`id` = 111161',
+      []
+    );
+
+
+    return view('movies.detail', compact('detail', 'detailMovie'));
   }
 }
