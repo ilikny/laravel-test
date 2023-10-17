@@ -13,7 +13,13 @@
 
   <a href="/awards">Awards</a><br>
   <a href="/top-rated-movies">Top rated movies</a><br>
-  <a href="/top-rated-games">Top rated games</a>
+  <a href="/top-rated-games">Top rated games</a><br>
+
+  <form action="/search" method="post">
+  <input name="search" placeholder="Search for movie">
+  <button>Search</button>
+
+  </form>
 
 
 

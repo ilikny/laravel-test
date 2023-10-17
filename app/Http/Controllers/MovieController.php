@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,6 +21,20 @@ class MovieController extends Controller
     );
 
     return view('top-rated-movies.index', compact('movies'));
+  }
+
+
+  public function index()
+  {
+    $movies = Movie::query()
+      ->orderBy('rating', 'desc')
+      ->limit(20)
+      ->where('votes_nr', '>=', 10000)
+      ->get();
+
+    // dd($movies);
+
+    return view('movies.index', compact('movies'));
   }
 
 
@@ -56,6 +71,7 @@ class MovieController extends Controller
   public function search()
   {
     $getSearch = $_GET['search'];
+
     $searchMovie = DB::select(
       'SELECT *
         FROM `movies`

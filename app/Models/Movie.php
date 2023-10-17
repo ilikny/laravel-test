@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Movie extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  public function movieType()
+  {
+    return $this->belongsTo(MovieType::class);
+  }
+
+  public function genres()
+  {
+    return $this->belongsToMany(Genre::class);
+  }
 }

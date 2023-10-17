@@ -14,7 +14,7 @@ return new class extends Migration
     Schema::create('reviews', function (Blueprint $table) {
       $table->id();
       $table->foreignId('movie_id');
-      $table->text('text');
+      $table->text('text'); //text of the review
       $table->timestamps();
     });
   }
