@@ -22,6 +22,8 @@ class MovieController extends Controller
     return view('top-rated-movies.index', compact('movies'));
   }
 
+
+
   public function shawshank()
   {
     $detail = DB::select(
@@ -47,5 +49,21 @@ class MovieController extends Controller
 
 
     return view('movies.detail', compact('detail', 'detailMovie'));
+  }
+
+
+
+  public function search()
+  {
+    $getSearch = $_GET['search'];
+    $searchMovie = DB::select(
+      'SELECT *
+        FROM `movies`
+        WHERE `name` LIKE ? ',
+      ["%$getSearch%"]
+    );
+    // dd($searchMovie);
+
+    return view('movies.search', compact('searchMovie'));
   }
 }
