@@ -15,19 +15,43 @@
   <ul>
 
     @foreach ($movies as $movie)
-
+<br>
+<br>
     <li>
-      {{ $movie->name }}
+      <h3>{{ $movie->name }}</h3>
+     
+
+      type: {{ $movie->movieType->slug }}
       <br>
-      type: {{$movie->movieType->name}}
-      <br>
+      
       genres:
       @foreach ($movie->genres as $genre)
-          {{$genre->name}}
+          {{ $genre->name }},
+      @endforeach
+      <br>
+      languages:
+      @foreach ($movie->languages as $language)
+          {{ $language->name }},
+      @endforeach
+      <br>
+      
+        certification: <?php  echo $movie->certification->slug ?>
+      <br>
+      Origin country: {{ $movie->originCountries }}
+      <br>
+      Movie status: {{ $movie->movieStatus }}
+     
+      <br>
+      <br>
+      
+      people:
+      @foreach ($movie->people as $person)
+          {{ $person->fullname }},
       @endforeach
     
     
     </li>
+    <hr>
 
     @endforeach
 

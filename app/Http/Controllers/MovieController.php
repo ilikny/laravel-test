@@ -28,8 +28,9 @@ class MovieController extends Controller
   {
     $movies = Movie::query()
       ->orderBy('rating', 'desc')
-      ->limit(20)
+      ->limit(5)
       ->where('votes_nr', '>=', 10000)
+      ->where('movie_type_id', 1)
       ->get();
 
     // dd($movies);
