@@ -34,7 +34,7 @@ class Movie extends Model
     return $this->belongsTo(Certification::class);
   }
 
-  public function originCountries()
+  public function originCountry()
   {
     return $this->belongsToMany(OriginCountry::class);
   }

@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\AwardController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MovieController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\VideogameController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +27,8 @@ use Illuminate\Support\Facades\Route;
 //laravel.test/awards
 Route::get('/awards', [AwardController::class, 'index']);
 
-
+Route::view('/terms', 'terms');
+Route::redirect('/termsandconditon', 'terms');
 
 Route::get('/', [IndexController::class, 'index']);
 
@@ -35,7 +38,11 @@ Route::get('/top-rated-games', [VideogameController::class, 'topRated']);
 
 Route::get('/movies/shawshank-redemption', [MovieController::class, 'shawshank']);
 
-Route::get('/search', [MovieController::class, 'search']);
+Route::get('/search', [MovieController::class, 'search'])->name('search');
 
 //           toto dole je stejne jako MovieController::class
-Route::get('/movies', ['App\Http\Controllers\MovieController', 'index']);
+Route::get('/movies/{order?}', ['App\Http\Controllers\MovieController', 'index']);
+
+Route::get('/about-us', [AboutController::class, 'aboutUs']);
+
+Route::post('/movies/{movie_id}/review', [ReviewController::class, 'store']);

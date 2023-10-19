@@ -21,25 +21,25 @@
       <h3>{{ $movie->name }}</h3>
      
 
-      type: {{ $movie->movieType->slug }}
+      Type: {{ $movie->movieType->slug }}
       <br>
       
-      genres:
+      Genres:
       @foreach ($movie->genres as $genre)
           {{ $genre->name }},
       @endforeach
       <br>
-      languages:
+      Languages:
       @foreach ($movie->languages as $language)
           {{ $language->name }},
       @endforeach
       <br>
       
-        certification: <?php  echo $movie->certification->slug ?>
-      <br>
-      Origin country: {{ $movie->originCountries }}
-      <br>
-      Movie status: {{ $movie->movieStatus }}
+        Certification: {{ $movie->certification ? $movie->certification->slug : '--' }}
+      <br> 
+      Origin country: {{ $movie->originCountry ? $movie->originCountry : '--' }}
+      <br>   
+      Movie status: {{ $movie->movieStatus ? $movie->movieStatus : '--' }}
      
       <br>
       <br>

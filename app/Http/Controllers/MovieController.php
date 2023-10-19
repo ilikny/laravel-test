@@ -24,13 +24,20 @@ class MovieController extends Controller
   }
 
 
-  public function index()
+  public function index($order = null)
   {
-    $movies = Movie::query()
-      ->orderBy('rating', 'desc')
+    $query = Movie::query();
+
+    if ($order === 'rating') {
+      $query->orderBy('rating', 'desc');
+    } else {
+      $query->orderBy('name');
+    }
+    $movies = $query
       ->limit(5)
       ->where('votes_nr', '>=', 10000)
       ->where('movie_type_id', 1)
+      // ->where()
       ->get();
 
     // dd($movies);
@@ -71,16 +78,22 @@ class MovieController extends Controller
 
   public function search()
   {
-    $getSearch = $_GET['search'];
+    $getSearch = $_GET['search'] ?? null;
 
-    $searchMovie = DB::select(
-      'SELECT *
+    if ($getSearch) {
+      $searchMovie = DB::select(
+        'SELECT *
         FROM `movies`
         WHERE `name` LIKE ? ',
-      ["%$getSearch%"]
-    );
+        ["%$getSearch%"]
+      );
+    }
     // dd($searchMovie);
 
     return view('movies.search', compact('searchMovie'));
+  }
+
+  public function detail()
+  {
   }
 }
