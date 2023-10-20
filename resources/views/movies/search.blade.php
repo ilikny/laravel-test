@@ -17,6 +17,7 @@
   <?php foreach ($searchMovie as $item) : ?>
     <li>
       <?= $item->name ?>
+      (year:<?= $item->year ?>)
     </li>
 
   <?php endforeach; ?>

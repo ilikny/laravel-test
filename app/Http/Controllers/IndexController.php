@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\DB;
 
 class IndexController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
+
+    // dd($request->input('abc'));
+
     // $movies = DB::select(
     //   'SELECT *
     //    FROM `movies`

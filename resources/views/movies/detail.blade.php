@@ -4,23 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Detail of Shawshank redemption</title>
+  <title>Detail of {{ $movie->name }}</title>
 </head>
 
 <body>
-  <h1>Detail of Shawshank redemption</h1>
-
+  
   <a href="/">Home</a><br>
   <a href="/awards">Awards</a><br>
   <a href="/top-rated-movies">Top rated movies</a><br>
+  
+  <h1>Detail of {{ $movie->name }}</h1>
+      
 
-  <?php foreach ($detailMovie as $item) : ?>
-    <h2><?= $item->name; ?></h2>
-  <?php endforeach; ?>
+    <div class="year">
+        {{ $movie->year }}
+    </div>
 
-  <?php foreach ($detail as $item) : ?>
-    <p><?= $item->position ?> - <?= $item->fullname; ?></p>
-  <?php endforeach; ?>
+
+
 
 
 </body>

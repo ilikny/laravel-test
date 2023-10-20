@@ -93,7 +93,12 @@ class MovieController extends Controller
     return view('movies.search', compact('searchMovie'));
   }
 
-  public function detail()
+  public function detail($movie_id)
   {
+    $movie = Movie::findOrFail($movie_id);
+
+
+
+    return view('movies.detail', compact('movie'));
   }
 }
